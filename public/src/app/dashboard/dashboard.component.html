@@ -1,0 +1,35 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-xs-6">
+      <h1>Hello {{ currentUser.firstname }} {{ currentUser.lastname }}</h1>
+    </div>
+    <div class="col-xs-6">
+      <a [routerLink]="['/create']">Create a New Poll</a> |
+      <a (click)="onLogout()" [routerLink]="['']">Logout</a>
+    </div>
+  </div>
+  <hr>
+  <label for="search"> Search By Question:
+    <input type="text" name="search" [(ngModel)]="search">
+  </label>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Survey Question</th>
+        <th>Date Posted</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let poll of pollList | searchPipe:'question':search">
+      <tr>
+        <td>{{poll._user.firstname}}</td>
+        <td><a (click)="onClick(poll._id)">{{poll.question}}</a></td>
+        <td>{{ poll.createdAt | date }}</td>
+        <td>
+          <a (click)="onDelete(poll._id)" *ngIf="poll._user._id === currentUser._id">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

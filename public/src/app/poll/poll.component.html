@@ -1,0 +1,45 @@
+<div class="container">
+  <a [routerLink]="['/dashboard']">Go to polls</a>
+  <h3>{{pollList.question}}</h3>
+  <p>Click the vote button to choose one.</p>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr ng-model="searchText">
+        <th>Question</th>
+        <th>Answers</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{pollList.option1}}</td>
+        <td>{{pollList.count1}}</td>
+        <td>
+          <a (click)="onLike(1, pollList._id)">Vote</a> 
+        </td>
+      </tr>
+      <tr>
+        <td>{{pollList.option2}}</td>
+        <td>{{pollList.count2}}</td>
+        <td>
+          <a (click)="onLike(2, pollList._id)">Vote</a>
+        </td>
+      </tr>
+      <tr>
+        <td>{{pollList.option3}}</td>
+        <td>{{pollList.count3}}</td>
+        <td>
+          <a (click)="onLike(3, pollList._id)">Vote</a>
+        </td>
+      </tr>
+      <tr>
+        <td>{{pollList.option4}}</td>
+        <td>{{pollList.count4}}</td>
+        <td>
+          <a (click)="onLike(4, pollList._id)">Vote</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
